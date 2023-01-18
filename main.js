@@ -67,18 +67,18 @@ for (let index = 0; index < posts.length; index++) {
                                 <div class="post__header">
                                     <div class="post-meta">                    
                                         <div class="post-meta__icon">
-                                            <img class="profile-pic" src="https://unsplash.it/300/300?image=15" alt="Phil Mangione">                    
+                                        <img class="profile-pic" src="${element.media}" alt="${element.author.name}">                    
                                         </div>
                                         <div class="post-meta__data">
-                                            <div class="post-meta__author">Phil Mangione</div>
-                                            <div class="post-meta__time">4 mesi fa</div>
+                                            <div class="post-meta__author">${element.author.name}</div>
+                                            <div class="post-meta__time">${element.created}</div>
                                         </div>                    
                                     </div>
                                 </div>
-                                <div class="post__text">Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.
+                                <div class="post__text">${element.content}
                                 </div>
                                     <div class="post__image">
-                                        <img src="https://unsplash.it/600/300?image=171" alt="">
+                                        <img src="${element.media}" alt="">
                                     </div>
                                 <div class="post__footer">
                                     <div class="likes js-likes">
@@ -89,13 +89,17 @@ for (let index = 0; index < posts.length; index++) {
                                             </a>
                                         </div>
                                         <div class="likes__counter">
-                                            // Piace a <b id="like-counter-1" class="js-likes-counter"></b> persone
+                                            Piace a <b id="like-counter-1" class="js-likes-counter">${element.likes}</b> persone
                                         </div>
                                     </div> 
                                 </div>`          
 
 }
+
 let likeButton = document.querySelector('.like-button')
+const likedPosts = []
+let likesCounter = document.querySelector('js-likes-counter');
+let likesCounterOne = document.getElementById('like-counter-1')
 
 likeButton.addEventListener('click',
 
@@ -103,12 +107,33 @@ likeButton.addEventListener('click',
 
         console.log('cliccato mi piace')
 
-        let likesCounter = document.querySelector('.likes__counter');
+        likeButton.classList.add('like-button--liked');
 
+        likesCounter = 80;
         likesCounter++;
+        likesCounterOne.innerHTML = likesCounter;
+
+        console.log(likesCounter)
+
+        // likedPosts.push(posts.id)
+        // console.log(likedPosts)
+        
+        // console.log(likedPosts, 'Numero di post ai quali hai messo like')
+
 
     }      
     
 )
+
+
+
+
+
+
+
+
+
+
+
 
 
