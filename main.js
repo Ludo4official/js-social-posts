@@ -83,7 +83,7 @@ for (let index = 0; index < posts.length; index++) {
                                 <div class="post__footer">
                                     <div class="likes js-likes">
                                         <div class="likes__cta">
-                                            <a class="like-button  js-like-button" href="#" data-postid="1">
+                                            <a class="like-button  js-like-button" data-postid="1">
                                                 <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                                                 <span class="like-button__label">Mi Piace</span>
                                             </a>
@@ -96,35 +96,25 @@ for (let index = 0; index < posts.length; index++) {
 
 }
 
-let likeButton = document.querySelector('.like-button')
+let likeButton = document.querySelectorAll('.js-like-button')
 const likedPosts = []
 let likesCounter = document.querySelector('js-likes-counter');
 let likesCounterOne = document.getElementById('like-counter-1')
 
-likeButton.addEventListener('click',
+likeButton.forEach((singleButton, index) => {
 
-    function () {
-
-        console.log('cliccato mi piace')
-
-        likeButton.classList.add('like-button--liked');
-
-        likesCounter = 80;
-        likesCounter++;
-        likesCounterOne.innerHTML = likesCounter;
-
-        console.log(likesCounter)
-
-        // likedPosts.push(posts.id)
-        // console.log(likedPosts)
-        
-        // console.log(likedPosts, 'Numero di post ai quali hai messo like')
-
-
-    }      
+    singleButton.addEventListener('click', 
     
-)
+        function() {
+            
+            console.log('Cliccato mi piace sul post numero:', index);
+            this.classList.add('like-button--liked');
+            likedPosts.push(index);
+            console.log('Totale dei post ai quali hai messo mi piace:', likedPosts)
 
+        }
+    );
+});
 
 
 
